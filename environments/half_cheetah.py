@@ -3,16 +3,18 @@
 # running speed, energy efficiency
 
 import numpy as np
-from gym import utils
-from gym.envs.mujoco import mujoco_env
+from gymnasium import utils
+from gymnasium.envs.mujoco import mujoco_env
+from gymnasium.spaces import Box
+
 from os import path
 
-class HalfCheetahEnv(mujoco_env.MujocoEnv, utils.EzPickle):
+class HalfCheetahEnv(mujoco_env.MujocoEnv, utils.ezpickle.EzPickle):
     def __init__(self):
         self.obj_dim = 2
         mujoco_env.MujocoEnv.__init__(self, model_path = path.join(path.abspath(path.dirname(__file__)), "assets/half_cheetah.xml"), frame_skip = 5)
-        utils.EzPickle.__init__(self)
-    
+        utils.ezpickle.EzPickle.__init__(self)
+
     def step(self, action):
         xposbefore = self.sim.data.qpos[0]
         action = np.clip(action, -1.0, 1.0)
