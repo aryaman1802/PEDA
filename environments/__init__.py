@@ -21,7 +21,7 @@ from gymnasium import register
 
 register(
     id = 'MO-HalfCheetah-v2',
-    entry_point = 'environments.half_cheetah:HalfCheetahEnv',
+    entry_point = 'PEDA.environments.half_cheetah:HalfCheetahEnv',
     max_episode_steps=500,
 )
 
