@@ -32,7 +32,7 @@ class HalfCheetahEnv(mujoco_env.MujocoEnv, utils.ezpickle.EzPickle):
         reward_energy = 4.0 - 1.0 * np.square(action).sum() + alive_bonus
 
         done = not (abs(ang) < np.deg2rad(50))
-        return ob, 0., done, {'obj': np.array([reward_run, reward_energy])}
+        return ob, 0., done, 0, {'obj': np.array([reward_run, reward_energy])}
     
     def _get_obs(self):
         return np.concatenate([
