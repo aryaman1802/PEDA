@@ -12,11 +12,10 @@ from os import path
 class HalfCheetahEnv(mujoco_env.MujocoEnv, utils.ezpickle.EzPickle):
     def __init__(self, exclude_current_positions_from_observation=True):
         self.obj_dim = 2
+        obs_size = 17
         # obs_size = (self.data.qpos.size + self.data.qvel.size - exclude_current_positions_from_observation)
-        # mujoco_env.MujocoEnv.__init__(self, model_path = path.join(path.abspath(path.dirname(__file__)), "assets/half_cheetah.xml"), 
-        #                               frame_skip = 5, observation_space = Box(low=-np.inf, high=np.inf, shape=(obs_size,), dtype=np.float64))
         mujoco_env.MujocoEnv.__init__(self, model_path = path.join(path.abspath(path.dirname(__file__)), "assets/half_cheetah.xml"), 
-                                      frame_skip = 5, observation_space = None)
+                                      frame_skip = 5, observation_space = Box(low=-np.inf, high=np.inf, shape=(obs_size,), dtype=np.float64))
         utils.ezpickle.EzPickle.__init__(self)
 
     def step(self, action):
